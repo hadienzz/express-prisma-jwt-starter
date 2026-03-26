@@ -114,8 +114,16 @@ export async function refresh(req: Request, res: Response): Promise<void> {
     const payload = verifyRefreshToken(refreshToken);
 
     const stored = await prisma.refreshToken.findUnique({ where: { token: refreshToken } });
-    if (!stored || stored.expiresAt < new Date() || stored.userId !== payload.userId) {
-      res.status(401).json({ message: 'Invalid or expired refresh token' });
+    if (!stored) {
+      res.status(401).json({ message: 'Invalid refresh token' });
+      return;
+    }
+    if (stored.expiresAt < new Date()) {
+      res.status(401).json({ message: 'Refresh token has expired' });
+      return;
+    }
+    if (stored.userId !== payload.userId) {
+      res.status(401).json({ message: 'Invalid refresh token' });
       return;
     }
 
