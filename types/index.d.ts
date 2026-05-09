@@ -3,4 +3,4 @@ export interface LoginPayload {
     password: string
 }
 
-export interface RegisterPayload extends LoginPayload{}
+export type RegisterPayload = LoginPayload;

@@ -3,9 +3,7 @@ import { useFormik } from "formik"
 export interface LoginResponse {
   status: string;
   message: string;
-  data?: {
-
-  }
+  data?: unknown;
 }
 
 const useLogin = () => {

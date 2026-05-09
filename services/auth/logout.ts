@@ -3,9 +3,7 @@ import axiosInstance from "@/lib/axios";
 export interface LogoutResponse {
   status: string;
   message: string;
-  data?: {
-
-  }
+  data?: unknown;
 }
 
 const logout = async (): Promise<LogoutResponse> => {

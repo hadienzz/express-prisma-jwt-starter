@@ -4,9 +4,7 @@ import { RegisterPayload } from "@/types";
 export interface LogoutResponse {
   status: string;
   message: string;
-  data?: {
-
-  }
+  data?: unknown;
 }
 
 const register = async (payload: RegisterPayload): Promise<LogoutResponse> => {

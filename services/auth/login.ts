@@ -4,9 +4,7 @@ import { LoginPayload } from "@/types";
 export interface LoginResponse {
   status: string;
   message: string;
-  data?: {
-
-  }
+  data?: unknown;
 }
 
 const login = async (payload: LoginPayload): Promise<LoginResponse> => {
